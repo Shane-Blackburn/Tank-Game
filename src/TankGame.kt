@@ -52,8 +52,8 @@ fun main(args: Array<String>) {
             userTank.fireAt(enemyTank)
         }
 
-        var randomInt = Random.nextInt(0, 2)
-        if (randomInt == 0) {
+        var randomInt = Random.nextInt(0, 10)
+        if (randomInt <= 6) {
             enemyTank.getHit()
         } else {
             println("That shot is a miss.")
