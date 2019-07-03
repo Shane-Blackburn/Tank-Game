@@ -8,7 +8,7 @@ fun main(args: Array<String>) {
     var userTank: Tank? = alice
     var enemyTank: Tank? = bill
     var tanks = arrayListOf(alice, bill, charlie)
-    var tanksAlive = tanks.size
+    var tanksAlive = 3
 
     loop@ while (tanksAlive > 1) {
         for (tank in tanks) {
@@ -45,9 +45,9 @@ fun main(args: Array<String>) {
             continue@loop
         }
 
-        if (userTank == enemyTank) {
-            println("You cannot shoot at yourself")
-            break
+        if (userTank == enemyTank || userTank.ammo == 0) {
+            println("You cannot do that.")
+            continue@loop
         } else {
             userTank.fireAt(enemyTank)
         }
@@ -60,8 +60,9 @@ fun main(args: Array<String>) {
             continue
         }
 
-        if (!enemyTank.isAlive) {
+        if (! enemyTank.isAlive) {
             tanks.remove(enemyTank)
+            tanksAlive --
         }
 
     }
